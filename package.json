@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "@discordjs/core": "^2.0.1",
+    "@dotenvx/dotenvx": "^1.38.3",
+    "bufferutil": "^4.0.9",
+    "discord-api-types": "^0.37.119",
+    "postgres": "^3.4.5",
+    "zlib-sync": "^0.1.9"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "rimraf": "^6.0.1",
+    "type-fest": "^4.37.0",
+    "typescript": "^5.8.2"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
+  "name": "flow",
+  "scripts": {
+    "build": "npx tsc -b",
+    "check": "npx @biomejs/biome check --write .",
+    "post-commands": "npm run remove && npm run build && dotenvx run -- node dist/utilities/post_commands.js",
+    "start": "npm run remove && npm run build && dotenvx run -- node dist/index.js",
+    "remove": "rimraf dist"
+  },
+  "type": "module"
+}
